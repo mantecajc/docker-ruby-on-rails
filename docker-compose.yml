@@ -1,0 +1,24 @@
+version: "2"
+services:
+  database:
+    image: postgres
+    env_file:
+      - .env
+    # DOCKERFILE TODO: To check how volumes work and how to do it better.
+    # volumes: 
+      # - ./.docker/volumes/database:/var/lib/postgresql/data
+    # END TODO.
+  webserver:
+    build:
+      context: .
+      dockerfile: ./.docker/Dockerfile
+      args:
+        project_name: ${PROJECT_NAME}
+    env_file:
+      - .env
+    volumes:
+      - ".:/${PROJECT_NAME}"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
