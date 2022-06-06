@@ -4,7 +4,7 @@ services:
     image: postgres
     env_file:
       - .env
-    # DOCKERFILE TODO: To check how volumes work and how to do it better.
+    # DOCKERFILE TODO: Check how volumes work.
     # volumes: 
       # - ./.docker/volumes/database:/var/lib/postgresql/data
     # END TODO.

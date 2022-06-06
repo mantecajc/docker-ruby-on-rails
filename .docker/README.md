@@ -2,7 +2,7 @@
 
     git clone https://github.com/mantecajc/docker-ruby-on-rails.git PROJECT_NAME
 
-2º Give a project name in `.env` file. Please avoid blanks !
+2º Give a project name in `.env` file (and in .docker/Dockerfile). Please avoid blanks !
 
 <!-- 3º Select your Ruby version on Dockerfile & Gemfile. -->
 
@@ -12,13 +12,13 @@
 
     docker-compose run --no-deps webserver rails new . --force --database=postgresql
 
-You should now have a Rails project in the app directory.
-
 > For a [quick Rails install](https://www.bigbinary.com/blog/rails-6-1-adds-minimal-option-support), use the `--minimal` flag.
 
     docker-compose run --no-deps webserver rails new . --minimal --force --database=postgresql
 
-4º Copy & paste `example.database.yml` on `database.yml`.
+You should now have a Rails project in the app directory.
+
+4º Copy & paste `.docker/example.database.yml` on `config/database.yml`.
 
 5º Builds project images & boots up the app.
 

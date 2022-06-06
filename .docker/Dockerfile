@@ -1,8 +1,9 @@
 FROM ruby:2.7.6
 
 # Set ARG & ENV variables.
-ARG PROJECT_NAME
-ENV env_project_name=$PROJECT_NAME
+# ARG PROJECT_NAME
+# ENV env_project_name=$PROJECT_NAME
+ENV env_project_name=testappname
 
 # Register Yarn package source.
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -17,7 +18,7 @@ WORKDIR /$env_project_name
 COPY . /$env_project_name
 
 # DOCKERFILE TODO: Copy & paste database.yml on config/database.yml
-# This worked but did not copy it to my local file: ./config/database.yml
+# it did not copy it to my local file: ./config/database.yml
 # COPY ./.docker/database.yml ./config/database.yml 
 # COPY .env.docker /appname/.env
 # END TODO
@@ -26,7 +27,6 @@ RUN gem install bundler
 RUN bundle install
 
 # DOCKERFILE TODO: Copy & paste database.yml on config/database.yml
-# RUN ls
 # RUN cp .docker/database.yml ./config/
 # END TODO
 
